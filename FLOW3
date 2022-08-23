@@ -1,0 +1,375 @@
+[
+    {
+        "id": "66541acabbddd9f6",
+        "type": "tab",
+        "label": "Flow 3",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "7fc6cb0eb1168132",
+        "type": "inject",
+        "z": "66541acabbddd9f6",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "15",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "15",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 60,
+        "wires": [
+            [
+                "87afdf34aa5d31d8"
+            ]
+        ]
+    },
+    {
+        "id": "a5591a5452b342df",
+        "type": "debug",
+        "z": "66541acabbddd9f6",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 670,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "87afdf34aa5d31d8",
+        "type": "function",
+        "z": "66541acabbddd9f6",
+        "name": "Función para Hora y Fecha ",
+        "func": "var date = new Date (msg.payload); //creamos un objeto a partir del payload enviado por timestamp\nmsg.payload=date.toString();\n//cambiamos el payload para que sea una fecha con formato\nreturn msg;\n//regresa el mensaje para que se envie al siguiente nodo",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 60,
+        "wires": [
+            [
+                "a5591a5452b342df",
+                "e7832529844dc580"
+            ]
+        ]
+    },
+    {
+        "id": "e7832529844dc580",
+        "type": "ui_text",
+        "z": "66541acabbddd9f6",
+        "group": "f072e3bfc71416d5",
+        "order": 0,
+        "width": "4",
+        "height": "2",
+        "name": "",
+        "label": "La hora es",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 570,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "1bfe52c7063994b7",
+        "type": "inject",
+        "z": "66541acabbddd9f6",
+        "name": "sensor 1",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "30",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "etiqueta 3",
+        "payload": "2",
+        "payloadType": "str",
+        "x": 140,
+        "y": 220,
+        "wires": [
+            [
+                "f9673258a11480da",
+                "0a7728f750ad13fa",
+                "c498585015aa2f56"
+            ]
+        ]
+    },
+    {
+        "id": "2846dd9d8f2ec287",
+        "type": "inject",
+        "z": "66541acabbddd9f6",
+        "name": "sensor 2",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "10",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "etiqueta 1",
+        "payload": "4",
+        "payloadType": "str",
+        "x": 140,
+        "y": 280,
+        "wires": [
+            [
+                "0a7728f750ad13fa",
+                "10d3748dc17a845e",
+                "c498585015aa2f56"
+            ]
+        ]
+    },
+    {
+        "id": "5552a534e856b063",
+        "type": "inject",
+        "z": "66541acabbddd9f6",
+        "name": "sensor 3",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "15",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "etiqueta 2",
+        "payload": "15",
+        "payloadType": "str",
+        "x": 140,
+        "y": 340,
+        "wires": [
+            [
+                "0a7728f750ad13fa",
+                "10d3748dc17a845e",
+                "c498585015aa2f56"
+            ]
+        ]
+    },
+    {
+        "id": "f9673258a11480da",
+        "type": "ui_gauge",
+        "z": "66541acabbddd9f6",
+        "name": "",
+        "group": "98c00bd207c82f45",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "sensor 1",
+        "label": "activacion 1",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 10,
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 440,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "0a7728f750ad13fa",
+        "type": "ui_gauge",
+        "z": "66541acabbddd9f6",
+        "name": "",
+        "group": "c21c7ff2c6f29cb0",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "sensor 2",
+        "label": "activacion 2",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "20",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 440,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "10d3748dc17a845e",
+        "type": "ui_gauge",
+        "z": "66541acabbddd9f6",
+        "name": "",
+        "group": "5aaec1fc10446956",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "sensor 3",
+        "label": "temperatura",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "20",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 440,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "c498585015aa2f56",
+        "type": "ui_chart",
+        "z": "66541acabbddd9f6",
+        "name": "",
+        "group": "41c6d821e25cb461",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "label": "Registro",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "20",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 680,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f072e3bfc71416d5",
+        "type": "ui_group",
+        "name": "datos manuales",
+        "tab": "953b0e6e45b7cd88",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "98c00bd207c82f45",
+        "type": "ui_group",
+        "name": "Sensor 1",
+        "tab": "953b0e6e45b7cd88",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "c21c7ff2c6f29cb0",
+        "type": "ui_group",
+        "name": "Sensor 2",
+        "tab": "953b0e6e45b7cd88",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "5aaec1fc10446956",
+        "type": "ui_group",
+        "name": "Sensor 3",
+        "tab": "953b0e6e45b7cd88",
+        "order": 4,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "41c6d821e25cb461",
+        "type": "ui_group",
+        "name": "Registro de los tres sensores",
+        "tab": "953b0e6e45b7cd88",
+        "order": 5,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "953b0e6e45b7cd88",
+        "type": "ui_tab",
+        "name": "Fecha y hora con datos ",
+        "icon": "dashboard",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    }
+]
